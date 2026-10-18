@@ -9,6 +9,16 @@ from anomalib.engine import Engine
 from anomalib.models import Padim
 from anomalib.data import PredictDataset
 
+import torch
+
+# Временно принудительно отключаем weights_only для доверенных чекпоинтов
+_original_torch_load = torch.load
+def _trusted_load(*args, **kwargs):
+    kwargs['weights_only'] = False
+    return _original_torch_load(*args, **kwargs)
+
+torch.load = _trusted_load
+
 app = FastAPI(title="Industrial Defect Detection API")
 
 # Загружаем модель ОДИН РАЗ при старте сервера
