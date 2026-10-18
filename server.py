@@ -18,13 +18,13 @@ engine = Engine()
 model = Padim()
 # Прогреваем модель, чтобы при первом запросе не было задержки
 # (можно закомментировать, если не нужно)
-print("Загрузка модели...")
-_ = engine.predict(
-    model=model,
-    dataset=PredictDataset(path=Path("datasets/MVTecAD/bottle/test/good/000.png"), image_size=(256, 256)),
-    ckpt_path=CHECKPOINT_PATH,
-)
-print("Модель готова")
+#print("Загрузка модели...")
+#_ = engine.predict(
+#    model=model,
+#    dataset=PredictDataset(path=Path("datasets/MVTecAD/bottle/test/good/000.png"), image_size=(256, 256)),
+#    ckpt_path=CHECKPOINT_PATH,
+#)
+#print("Модель готова")
 
 
 @app.get("/")
